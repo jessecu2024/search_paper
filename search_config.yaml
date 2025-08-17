@@ -1,0 +1,89 @@
+conferences:
+  AAAI:
+    name: Association for the Advancement of Artificial Intelligence
+    parsing_rules:
+      title_selectors:
+      - <h3[^>]*>(.*?)</h3>
+      - <strong>(.*?)</strong>
+    search_url_pattern: null
+    supported_years:
+    - '2020'
+    - '2021'
+    - '2022'
+    - '2023'
+    - '2024'
+    - '2025'
+    url_pattern: https://aaai.org/{year}/accepted-papers/
+  ICLR:
+    name: International Conference on Learning Representations
+    parsing_rules:
+      title_selectors:
+      - <span[^>]*class="[^"]*title[^"]*"[^>]*>(.*?)</span>
+      - <h3[^>]*>(.*?)</h3>
+    search_url_pattern: https://iclr.cc/virtual/{year}/papers.html?search={keyword}
+    supported_years:
+    - '2020'
+    - '2021'
+    - '2022'
+    - '2023'
+    - '2024'
+    - '2025'
+    url_pattern: https://iclr.cc/virtual/{year}/papers.html
+  ICML:
+    name: International Conference on Machine Learning
+    parsing_rules:
+      author_selectors:
+      - <span[^>]*class="[^"]*author[^"]*"[^>]*>(.*?)</span>
+      - '"authors":\s*\[(.*?)\]'
+      title_selectors:
+      - <span[^>]*class="[^"]*title[^"]*"[^>]*>(.*?)</span>
+      - <h3[^>]*>(.*?)</h3>
+      - '"title":\s*"([^"]*)"'
+    search_url_pattern: https://icml.cc/virtual/{year}/papers.html?search={keyword}
+    supported_years:
+    - '2020'
+    - '2021'
+    - '2022'
+    - '2023'
+    - '2024'
+    - '2025'
+    url_pattern: https://icml.cc/virtual/{year}/papers.html
+  NeurIPS:
+    name: Neural Information Processing Systems
+    parsing_rules:
+      title_selectors:
+      - <span[^>]*class="[^"]*title[^"]*"[^>]*>(.*?)</span>
+    search_url_pattern: https://nips.cc/virtual/{year}/papers.html?search={keyword}
+    supported_years:
+    - '2020'
+    - '2021'
+    - '2022'
+    - '2023'
+    - '2024'
+    url_pattern: https://nips.cc/virtual/{year}/papers.html
+debug_mode: true
+filter_rules:
+  exclude_patterns:
+  - ^\d+\s*$
+  - ^(abstract|author|paper|download|pdf|view|more)s?\s*$
+  - '@\w+\.'
+  - http[s]?://
+  max_title_length: 200
+  min_title_length: 15
+output_dir: output
+request_delay: 3
+request_headers:
+  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  Accept-Language: en-US,en;q=0.5
+  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/120.0.0.0 Safari/537.36
+search_keywords:
+- unlearning
+- machine unlearning
+- federated unlearning
+- selective forgetting
+- data deletion
+target_years:
+- '2023'
+- '2024'
+- '2025'
